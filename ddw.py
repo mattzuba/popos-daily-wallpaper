@@ -131,11 +131,11 @@ class DeepinDailyWallpaper:
         return output_file
 
     def _set_wallpaper(self, path):
-        if self._change == 'wallpaper' or self._change == 'all':
-            self._dbus_set('background', path)
-
         if self._change == 'greeter' or self._change == 'all':
             self._dbus_set('greeterbackground', path)
+
+        if self._change == 'wallpaper' or self._change == 'all':
+            self._dbus_set('background', path)
 
     def _dbus_set(self, which, path):
         self._bus.Set(which, path, dbus_interface='com.deepin.daemon.Appearance')
